@@ -1,0 +1,26 @@
+cabal-version:       2.2
+
+name:                adventofcode
+version:             2023
+synopsis:            Advent of code 2023 solutions
+description:         Advent of code 2023 solutions in Haskell by Erik Hesselink
+license:             BSD-3-Clause
+license-file:        LICENSE
+author:              Erik Hesselink
+maintainer:          hesselink@gmail.com
+category:            Advent of Code
+build-type:          Simple
+
+Source-Repository head
+  Type:                git
+  Location:            git://github.com/hesselink/adventofcode2023.git
+
+common shared-settings
+  build-depends:       base >=4.9 && <4.17
+  ghc-options:         -Wall
+  default-language:    GHC2021
+
+executable 1
+  import:              shared-settings
+  main-is:             Main.hs
+  hs-source-dirs:      1
