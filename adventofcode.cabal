@@ -16,7 +16,7 @@ Source-Repository head
   Location:            git://github.com/hesselink/adventofcode2023.git
 
 common shared-settings
-  build-depends:       base >=4.9 && <4.17
+  build-depends:       base >=4.9 && <4.18
   ghc-options:         -Wall
   default-language:    GHC2021
 
