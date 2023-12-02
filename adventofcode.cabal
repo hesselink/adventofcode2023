@@ -20,6 +20,13 @@ common shared-settings
   ghc-options:         -Wall
   default-language:    GHC2021
 
+library
+  import:              shared-settings
+  hs-source-dirs:      lib
+  exposed-modules:     Lib.Parser
+  build-depends:       containers
+                     , megaparsec
+
 executable 1
   import:              shared-settings
   main-is:             Main.hs
