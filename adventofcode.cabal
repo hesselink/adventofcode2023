@@ -31,3 +31,10 @@ executable 1
   import:              shared-settings
   main-is:             Main.hs
   hs-source-dirs:      1
+
+executable 2
+  import:              shared-settings
+  main-is:             Main.hs
+  hs-source-dirs:      2
+  build-depends:       adventofcode
+                     , megaparsec
