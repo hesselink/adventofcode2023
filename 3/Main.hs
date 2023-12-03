@@ -2,7 +2,8 @@ module Main where
 
 import Data.Char (isDigit)
 import Data.Map (Map)
-import Data.List (unfoldr)
+import Data.List (unfoldr, nub)
+import Data.Maybe (mapMaybe)
 
 import qualified Data.Map as Map
 
@@ -16,6 +17,10 @@ main = do
       partNumbers = filter (isPartNumber schematic) numbers
       result = sum . map value $ partNumbers
   print result
+  let gs = potentialGears schematic
+      ns = numberMap numbers
+      result2 = sum . mapMaybe (gearRatio ns) $ gs
+  print result2
 
 type Schematic = Map Point Char
 
@@ -52,3 +57,16 @@ isSymbol sch p = maybe False isSymbolChar (Map.lookup p sch)
 
 isSymbolChar :: Char -> Bool
 isSymbolChar c = not (isDigit c || c == '.')
+
+potentialGears :: Schematic -> [Point]
+potentialGears = map fst . filter ((== '*') . snd) . Map.toList
+
+numberMap :: [Number] -> Map Point Number
+numberMap = Map.fromList . concatMap (\n -> [(p, n) | p <- coordinates n])
+
+gearRatio :: Map Point Number -> Point -> Maybe Int
+gearRatio numbers p =
+  let surroundingNumbers = nub $ mapMaybe (flip Map.lookup numbers) (neighbours p)
+  in case surroundingNumbers of
+    [n1, n2] -> Just $ value n1 * value n2
+    _ -> Nothing
