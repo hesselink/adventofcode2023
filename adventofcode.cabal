@@ -24,6 +24,7 @@ library
   import:              shared-settings
   hs-source-dirs:      lib
   exposed-modules:     Lib.Parser
+                     , Lib.Point
   build-depends:       containers
                      , megaparsec
 
@@ -38,3 +39,10 @@ executable 2
   hs-source-dirs:      2
   build-depends:       adventofcode
                      , megaparsec
+
+executable 3
+  import:              shared-settings
+  main-is:             Main.hs
+  hs-source-dirs:      3
+  build-depends:       adventofcode
+                     , containers
