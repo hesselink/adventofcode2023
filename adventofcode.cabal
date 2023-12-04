@@ -46,3 +46,8 @@ executable 3
   hs-source-dirs:      3
   build-depends:       adventofcode
                      , containers
+
+executable 4
+  import:              shared-settings
+  main-is:             Main.hs
+  hs-source-dirs:      4
